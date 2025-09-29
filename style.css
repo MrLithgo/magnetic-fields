@@ -1,0 +1,684 @@
+/* ===== GLOBAL STYLES ===== */
+/* These apply to ALL pages */
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ECF0F1;
+    color: #2C3E50;
+    line-height: 1.6;
+}
+
+/* Color variables */
+:root {
+    --navy: #2C3E50;
+    --softgray: #ECF0F1;
+    --teal: #1ABC9C;
+    --gold: #F1C40F;
+    --slate: #7F8C8D;
+    --coral: #E74C3C;
+    --white: #FFFFFF;
+    --gray-100: #F7FAFC;
+    --gray-200: #EDF2F7;
+    --gray-300: #E2E8F0;
+  --teal-h: 174;
+  --teal-s: 72%;
+  --teal-l: 41%; /* base lightness */
+  --teal: hsl(var(--teal-h) var(--teal-s) var(--teal-l));
+  --teal-light: hsl(var(--teal-h) var(--teal-s) calc(var(--teal-l) + 12%));
+  --teal-dark:  hsl(var(--teal-h) var(--teal-s) calc(var(--teal-l) - 12%));
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1em;
+    background: var(--white);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: 1px solid transparent;
+  font-size: 1rem;
+}
+
+.teal-btn {
+    background-color: rgba(26, 188, 156, 0.8);
+    color: white;
+}
+
+.teal-btn:hover {
+    background-color: var(--teal-light);
+}
+
+.gold-btn {
+    background-color: rgba(241, 196, 15, 0.8);
+    color: var(--navy);
+}
+
+.gold-btn:hover {
+    background-color: rgba(241, 196, 15, 0.7);
+}
+
+.coral-btn {
+    background-color: rgba(231, 76, 60, 0.8);
+    color: white;
+}
+
+.coral-btn:hover {
+    background-color: rgba(231, 76, 60, 0.7);
+}
+
+.navy-btn {
+    background-color: rgba(44, 62, 80, 0.8);
+    color: white;
+}
+
+.navy-btn:hover {
+    background-color: rgba(44, 62, 80, 0.7);
+}
+
+/* ===== MAGNETIC FIELD SIMULATION SPECIFIC STYLES ===== */
+
+.page-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--navy);
+}
+
+
+.summary {
+    background: rgba(26, 188, 156, 0.1);
+    border: 2px solid var(--teal);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--navy);
+}
+.header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    opacity: 0.9;
+    font-size: 1.1rem;
+    color: var(--softgray);
+}
+
+.controls {
+    padding: 1.5rem;
+    background: var(--gray-200);
+    border-bottom: 2px solid var(--gray-300);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.scenario-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--slate);
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1rem;
+}
+
+.scenario-btn:hover {
+    background: var(--navy);
+    transform: translateY(-2px);
+}
+
+.scenario-btn.active {
+    background: var(--navy);
+}
+
+.action-btn {
+   display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: 1px solid transparent;
+  font-size: 1rem;
+}
+
+.action-btn:hover {
+    background: var(--teal-light);
+    color: var(--white);
+}
+
+.action-btn.active {
+    background: var(--teal-dark);
+    color: var(--white);
+}
+
+.simulation-area {
+    position: relative;
+    margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+    height: 600px;
+    background: var(--gray-200);
+    overflow: hidden;
+    cursor: crosshair;
+    border: 2px solid var(--gray-300);
+}
+
+.simulation-area.drawing-mode {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="2" fill="%231ABC9C"/></svg>') 10 10, crosshair;
+}
+
+.magnet {
+    position: absolute;
+    border-radius: 0.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.125rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.magnet.north {
+    background: linear-gradient(135deg, var(--coral), #c0392b);
+}
+
+.magnet.south {
+    background: linear-gradient(135deg, var(--navy), #2980b9);
+}
+
+.compass {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--navy);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.compass:active {
+    cursor: grabbing;
+}
+
+.compass-needle {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--coral) 0%, var(--coral) 50%, var(--navy) 50%, var(--navy) 100%);
+    border-radius: 2px;
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+/* compass needle with arrow head — paste into your styles.css */
+.compass-needle {
+  position: relative;                /* so ::after positions relative to needle */
+  width: 40px;                       /* length of the needle shaft */
+  height: 4px;                       /* thickness */
+  border-radius: 2px;
+  background: linear-gradient(90deg, #2c3e50 0%, #2c3e50 50%, #e74c3c 50%, #e74c3c 100%);
+  transform-origin: center;     /* rotate about the left end (tail) */
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  display: block;
+  
+                        /* adjust so the tail sits inside the compass circle */
+  transform: translateY(-50%);
+}
+
+/* arrow head at the RIGHT end of the needle shaft */
+.compass-needle::after {
+  content: "";
+  position: absolute;
+  right: -1px;                       /* place triangle slightly outside the shaft */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid #e74c3c;    /* red arrow pointing right (tip) */
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  pointer-events: none;
+}
+
+
+.plot-point {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--coral);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 50;
+}
+
+.field-line {
+    position: absolute;
+    height: 2px;
+    background: var(--teal);
+    transform-origin: left center;
+    z-index: 10;
+    border-radius: 1px;
+}
+
+.drawn-line {
+    position: absolute;
+    background: var(--teal);
+    border-radius: 1px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.instructions {
+    background-color: var(--softgray);
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.instructions h3 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.instructions ol {
+    padding-left: 1.25rem;
+}
+
+.instructions li {
+    margin-bottom: 0.25rem;
+}
+/* ===== COMPONENT STYLES ===== */
+/* Navigation styles */
+.nav {
+    background-color: var(--white);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-between;
+    height: 4rem;
+    align-items: center;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    height: 2rem;
+    width: 2rem;
+    color: var(--teal);
+}
+
+.logo-text {
+    margin-left: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--navy);
+}
+
+.nav-menu {
+    display: none;
+}
+
+.nav-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--slate);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--teal);
+}
+
+.nav-link.active {
+    border-bottom: 2px solid var(--teal);
+}
+
+.mobile-menu-btn {
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    color: var(--navy);
+}
+
+.mobile-menu {
+    padding: 0.5rem 0;
+}
+
+.mobile-menu-content {
+    padding: 0.5rem 1rem;
+}
+
+.mobile-nav-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    color: var(--slate);
+    text-decoration: none;
+}
+
+.mobile-nav-link:hover {
+    color: var(--teal);
+}
+
+.hidden {
+    display: none;
+}
+
+.nav-placeholder {
+    background-color: var(--gray-200);
+    padding: 1rem;
+    text-align: center;
+    color: var(--slate);
+}
+
+/* Footer styles */
+.footer {
+    background-color: var(--navy);
+    color: var(--white);
+    padding: 3rem 0;
+    margin-top: 2rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.footer-icon {
+    height: 2rem;
+    width: 2rem;
+    color: var(--teal);
+}
+
+.footer-logo-text {
+    margin-left: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-description {
+    color: var(--softgray);
+    margin-top: 1rem;
+}
+
+.footer-heading {
+    font-size: 1.125rem;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--softgray);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--teal);
+}
+
+.footer-bottom {
+    border-top: 1px solid #34495e;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.copyright {
+    color: var(--softgray);
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    color:#E2E8F0;
+}
+
+.footer-placeholder {
+    background-color: var(--gray-200);
+    padding: 2rem;
+    text-align: center;
+    color: var(--slate);
+}
+
+/* Responsive design for components */
+@media (min-width: 768px) {
+    .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .mobile-menu-btn {
+        display: none;
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .social-links {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .nav-container,
+    .footer-container {
+        padding: 0 2rem;
+    }
+}
+
+/* --- Advanced panel styles --- */
+.advanced-panel {
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem auto;
+    max-width: 1200px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+.magnet-control {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.magnet-control .magnet-label {
+    min-width: 90px;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.magnet-control input[type="range"] {
+    flex: 1;
+    appearance: none;
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(26,188,156,0.8), rgba(241,196,15,0.8));
+    outline: none;
+}
+
+.magnet-control input[type="number"] {
+    width: 64px;
+    padding: 0.25rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 0.375rem;
+    text-align: center;
+}
+
+.hidden { display: none; } /* you already had this; keep to toggle panel */
+/*/* ===== Advanced Toggle ===== */
+.advanced-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.advanced-toggle__input {
+  /* hide native checkbox but keep it accessible */
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.advanced-toggle__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Track acts as the positioning context */
+.advanced-toggle__track {
+  width: 46px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--gray-300);
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,0.06);
+  position: relative;     /* <-- key */
+  overflow: hidden;       /* keeps thumb clipped inside */
+}
+
+/* Thumb sits INSIDE the track, so it’s visible */
+.advanced-toggle__thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 2px 6px rgba(44,62,80,0.25);
+  transition: transform 160ms ease;
+}
+
+.advanced-toggle__text {
+  font-size: 0.95rem;
+  color: var(--navy);
+  font-weight: 600;
+}
+
+/* ON state */
+.advanced-toggle__input:checked + .advanced-toggle__label .advanced-toggle__track {
+  background: var(--teal);
+}
+.advanced-toggle__input:checked + .advanced-toggle__label .advanced-toggle__thumb {
+  transform: translateX(20px);
+}
+
+/* Focus ring (keyboard) */
+.advanced-toggle__input:focus-visible + .advanced-toggle__label .advanced-toggle__track,
+.advanced-toggle__label:focus-visible .advanced-toggle__track {
+  outline: 3px solid rgba(26,188,156,0.35);
+  outline-offset: 2px;
+}

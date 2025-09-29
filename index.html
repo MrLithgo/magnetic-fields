@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Magnetic fields v2</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnetic Field Plotting Simulation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="page-header h1">
+            <h1>Magnetic Fields</h1>
+           
+        </div>
+        <div class="summary">Use the plotting compass to map magnetic field lines around different magnet configurations</div>
+        <div class="controls">
+            <button class="scenario-btn active" onclick="setScenario('single')">Single Bar Magnet</button>
+            <button class="scenario-btn" onclick="setScenario('attract')">Two Magnets Attracting</button>
+            <button class="scenario-btn" onclick="setScenario('repel')">Two Magnets Repelling</button>
+            <div style="width: 20px;"></div>
+            <button class="action-btn teal-btn" id="drawModeBtn" onclick="toggleDrawMode()">Draw Field Lines</button>
+            <button class="btn coral-btn" onclick="clearAll()">Clear All</button>
+          <!-- Advanced toggle (checkbox + label) -->
+
+
+        </div>
+         <!-- Advanced panel (single global strength slider) -->
+<div id="advancedPanel" class="advanced-panel hidden" aria-hidden="true">
+  <h3 style="margin-bottom:0.5rem;">Advanced: Global magnet strength</h3>
+
+  <div class="magnet-control" style="align-items:center;">
+    <div class="magnet-label" style="min-width:120px;">Global strength</div>
+
+    <input
+      id="globalStrengthRange"
+      type="range"
+      min="0"
+      max="5"
+      step="0.1"
+      value="1"
+      aria-label="Global magnet strength slider"
+      style="flex:1;"
+    />
+
+    <input
+      id="globalStrengthNumber"
+      type="number"
+      min="0"
+      max="5"
+      step="0.1"
+      value="1"
+      aria-label="Global magnet strength value"
+      style="width:72px; margin-left:0.5rem;"
+    />
+  </div>
+
+  <p style="font-size:0.9rem; color:var(--slate); margin-top:0.5rem;">
+    This slider multiplies each magnet's base strength. 0 = off, 1 = normal, 5 = five times stronger.
+  </p>
+</div>
+
+        <div class="simulation-area" id="simulationArea">
+            <div class="compass" id="compass">
+                <div class="compass-needle" id="needle"></div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>How to Use:</h3>
+            <ol>
+                <li>Choose a magnet configuration from the buttons above</li>
+                <li>Drag the plotting compass around the simulation area</li>
+                <li>Click anywhere on the canvas to plot points where the compass needle points</li>
+                <li>Click "Draw Field Lines" to enter drawing mode, then draw lines by clicking and dragging</li>
+                <li>Click the drawing button again to exit drawing mode</li>
+                <li>Use "Clear All" to start over with a clean canvas</li>
+            </ol>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
