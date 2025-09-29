@@ -190,6 +190,25 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--teal-dark);
     color: var(--white);
 }
+/* Prevent text selection and native dragging inside the simulation during interactions */
+.simulation-area,
+.simulation-area * {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
+
+.simulation-area {
+  user-select: none;  /* prevents text selection interfering */
+  touch-action: none; /* prevents scrolling on touch devices */
+}
+
+/* Allow pointer events normally, but we will block gestures during drag with JS */
+.compass, .magnet, .plot-point {
+  touch-action: none; /* ensure pointer events produce pointermove events instead of panning/zooming on touch devices */
+}
 
 .simulation-area {
     position: relative;
@@ -200,6 +219,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
     cursor: crosshair;
     border: 2px solid var(--gray-300);
+  touch-action: none; 
 }
 
 .simulation-area.drawing-mode {
@@ -239,6 +259,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     z-index: 100;
+  touch-action: none; 
 }
 
 .compass:active {
